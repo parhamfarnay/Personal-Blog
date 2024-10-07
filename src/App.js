@@ -1,23 +1,17 @@
-import { gql, useQuery } from "@apollo/client";
-import Header from "./components/layout/Header";
+import { Route, Routes } from "react-router-dom";
+import AuthorPage from "./components/author/AuthorPage";
+import BlogPage from "./components/blog/BlogPage";
 import HomePage from "./components/home/HomePage";
 import Layout from "./components/layout";
 
-const QUERY = gql`
-  query {
-    authors {
-      name
-    }
-  }
-`;
-
 function App() {
-  const { data } = useQuery(QUERY);
-  console.log(data);
-
   return (
     <Layout>
-      <HomePage />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blogs/:slug" element={<BlogPage />} />
+        <Route path="/authors/:slug" element={<AuthorPage />} />
+      </Routes>
     </Layout>
   );
 }
