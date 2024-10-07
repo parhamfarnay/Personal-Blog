@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useQuery } from "@apollo/client";
 import { Grid } from "@mui/material";
 import { GET_BLOGS_INFO } from "../../graphql/queries";
