@@ -4,9 +4,12 @@ const GET_BLOGS_INFO = gql`
   query {
     posts {
       author {
-        name
-        avatar {
-          url
+        ... on Author {
+          id
+          name
+          avatar {
+            url
+          }
         }
       }
       title
@@ -59,11 +62,14 @@ const GET_POST_INFO = gql`
   query getPost($slug: String!) {
     post(where: { slug: $slug }) {
       author {
-        avatar {
-          url
+        ... on Author {
+          id
+          name
+          avatar {
+            url
+          }
+          field
         }
-        name
-        field
       }
       content {
         html
